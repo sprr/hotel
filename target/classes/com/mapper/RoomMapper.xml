@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.dao.RoomDao">
+ 
+ 	<!-- 查询房间所有信息 -->
+ 	<select id="find" resultType="Room">
+  		select * from room
+  		<where>
+  			<if test="rid!=null and rid!=''">
+  				and rid=#{rid}
+  			</if>
+  		</where>
+  	</select>
+  	
+  	<!-- 通过id查询客房信息 -->
+  	<select id="findByRid" resultType="Room">
+  		select * from room where rid=#{rid};
+  	</select>
+  	
+  	<!-- 通过id查询子客房信息 -->
+  	<select id="findzroomByRid" resultType="Zroom">
+  		select * from zroom where rid=#{rid};
+  	</select>
+  	
+  	<!--lsr  -->
+  	<select id="findall" resultType="Room">
+  	select * from room
+  	</select>
+  <!-- lsr -->
+  <select id="findByid" resultType="Room">
+		select * from room where  rid=#{rid} 
+	</select>
+  	<!-- lsr -->
+  	<update id="update">
+	update room  set rtype=#{rtype},rnumber=#{rnumber},rprice=#{rprice} where rid=#{rid}
+	</update>
+	
+	
+ </mapper>

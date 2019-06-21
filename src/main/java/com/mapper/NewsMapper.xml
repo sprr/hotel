@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.NewsDao">
+
+	<select id="getSelectNewsAll" resultType="News">
+		select * from news 
+		<trim prefix="WHERE" prefixOverrides="and">
+			<if test="content !=null and content != ''">
+				and content like concat('%',#{content},'%')
+			</if>
+		</trim>
+		limit #{pageNum},5
+	</select>
+	
+	<select id="getSelectNewsMaxCount" resultType="int">
+		select count(*) from news 
+		<trim prefix="WHERE" prefixOverrides="and">
+			<if test="content !=null and content != ''">
+				and content like concat('%',#{content},'%')
+			</if>
+		</trim>
+	</select>
+	
+	<update id="getUpdateNewsInfo">
+		update news set nimg=#{nimg},content=#{content},title=#{title},author=#{author},ntime=#{ntime} where nid=#{nid}
+	</update>
+	
+	<delete id="getDelNewsInfo">
+		delete from news where nid=#{nid}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,280 @@
+h4 {
+	margin-left: 20px;
+}
+
+p {
+	text-align: center;
+}
+
+.biao .biaoge tr td button a {
+	color: white;
+	text-decoration: none;
+}
+
+.biaoge tr td {
+	width: 200px;
+	height: 48px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.biaoge .tr td {
+	font-size: 20px;
+}
+
+.sousuo input {
+	width: 230px;
+	height: 28px;
+	border-radius: 5px;
+	border: 1px solid cornflowerblue;
+}
+.sousuo button:hover,
+.sousuo button:focus{
+	background-color: deepskyblue;
+}
+.sousuo button {
+	width: 50px;
+	height: 30px;
+	background-color: cornflowerblue;
+	border: none;
+	color: white;
+	border-radius: 5px;
+}
+
+.btn1 {
+	width: 50px;
+	height: 30px;
+	background-color: darkred;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: white;
+}
+
+.btn1:hover,
+.btn1:focus {
+	background-color: indianred;
+}
+
+.btn2 {
+	width: 50px;
+	height: 30px;
+	background-color: darkgreen;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: white;
+}
+
+.btn2:hover,
+.btn2:focus {
+	background-color: darkseagreen;
+}
+.btn3 {
+	width: 50px;
+	height: 30px;
+	background-color: dodgerblue;
+	border: none;
+	border-radius: 5px;
+	font-size: 16px;
+	color: white;
+}
+.btn3:hover,
+.btn3:focus {
+	background-color: lightblue;
+}
+.btn3 a{
+	color: white;
+}
+.modal {
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	width: 50%;
+	max-width: 350px;
+	height: 40%;
+	max-height: 220px;
+	margin: 100px auto;
+	border-radius: 10px;
+	background-color: #fff;
+	-webkit-animation: zoom 0.6s;
+	animation: zoom 0.6s;
+	resize: both;
+	overflow: auto;
+}
+.modal-content2 {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	width: 50%;
+	max-width: 600px;
+	height: 50%;
+	max-height: 500px;
+	margin: 100px auto;
+	border-radius: 10px;
+	background-color: #fff;
+	-webkit-animation: zoom 0.6s;
+	animation: zoom 0.6s;
+	resize: both;
+	overflow: auto;
+}
+.modal-content3 {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	width: 50%;
+	max-width: 600px;
+	height: 50%;
+	max-height: 500px;
+	margin: 100px auto;
+	border-radius: 10px;
+	background-color: #fff;
+	-webkit-animation: zoom 0.6s;
+	animation: zoom 0.6s;
+	resize: both;
+	overflow: auto;
+}
+.modal-content2 p{
+	font-size: 16px;
+	font-family: "微软雅黑";
+}
+.p{
+	padding-left: 16px;
+}
+.p1{
+	padding-left: 32px;
+}
+.p2{
+	padding-left: 48px;
+}
+.modal-content2 p input{
+	width: 200px;
+	height: 26px;
+	border-radius: 5px;
+	border: 1px solid cornflowerblue;
+}
+.modal-content3 p input{
+	width: 200px;
+	height: 26px;
+	border-radius: 5px;
+	border: 1px solid cornflowerblue;
+}
+@-webkit-keyframes zoom {
+	from {
+		-webkit-transform: scale(0)
+	}
+	to {
+		-webkit-transform: scale(1)
+	}
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0)
+	}
+	to {
+		transform: scale(1)
+	}
+}
+
+.modal-header {
+	box-sizing: border-box;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.close {
+	color: #b7b7b7;
+	font-size: 30px;
+	font-weight: bold;
+	margin-right: 20px;
+	transition: all 0.3s;
+}
+.close2 {
+	color: #b7b7b7;
+	font-size: 30px;
+	font-weight: bold;
+	margin-right: 20px;
+	transition: all 0.3s;
+}
+
+.close:hover,
+.close:focus {
+	color: #95b4ed;
+	text-decoration: none;
+	cursor: pointer;
+}
+.close2:hover,
+.close2:focus {
+	color: #95b4ed;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-body {
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+.modal-footer {
+	box-sizing: border-box;
+	border-top: 1px solid #ccc;
+	display: flex;
+	padding: 15px;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.modal-footer button {
+	width: 60px;
+	height: 35px;
+	padding: 5px;
+	box-sizing: border-box;
+	margin-right: 10px;
+	font-size: 16px;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	background-color: cornflowerblue;
+}
+
+.modal-footer button:hover,
+.modal-footer button:focus {
+	background-color: #95b4ed;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+	.modal-content {
+		width: 80%;
+	}
+}
+.fenye{
+	float: right;
+	margin-top: 3%;
+	margin-right: 7%;
+}
+.fenye button{
+	width: 65px;
+	height: 30px;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	background-color: cornflowerblue;
+}
+.fenye button:hover{
+	background-color: cadetblue;
+}

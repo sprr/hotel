@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.OrdersDao">
+	<resultMap type="Orders" id="OrdersResultMap">
+		<id property="oid" column="oid"></id>
+		<result property="zname" column="zname" />
+		<result property="rprice" column="rprice" />
+		<result property="ocost" column="ocost" />
+		<result property="rimg" column="rimg" />
+		<result property="otime" column="otime" />
+		<result property="endtime" column="endtime" />
+		<result property="intime" column="intime" />
+		<result property="outtime" column="outtime" />
+		<result property="oprice" column="oprice" />
+		<result property="remark" column="remark" />
+		<association property="user" column="uid"
+			select="com.dao.UserDao.findUserById"></association>
+	</resultMap>
+
+    <resultMap type="Orders" id="OrdersResultMap1">
+     <association property="user" column="uid" select="findUserByOrders"></association>
+    </resultMap>
+
+	<select id="getcount" resultType="int">
+		select count(*) from orders
+		<trim prefix="WHERE" prefixOverrides="and">
+			uid=#{uid}
+			<if test="otime !=null and otime != ''">
+				and otime like concat('%',#{otime},'%')
+			</if>
+		</trim>
+	</select>
+
+
+	<select id="getOid" resultMap="OrdersResultMap">
+		select * from orders
+		<trim prefix="WHERE" prefixOverrides="and">
+			uid=#{uid}
+			<if test="otime !=null and otime != ''">
+				and otime like concat('%',#{otime},'%')
+			</if>
+		</trim>
+		limit #{page},3
+	</select>
+
+
+     <!-- 后台查询订单信息 贺欢 -->
+    <select id="findOrders" resultMap="OrdersResultMap1">
+     select * from orders where  zname like concat('%',#{zname},'%') limit #{pagenumber},5
+   </select>
+   <select id="findUserByOrders" resultType="User">
+      select * from user where uid in (select uid from orders where oid=#{oid})
+    </select>
+   <!-- 后台修改订单信息 贺欢 -->
+   <update id="upOrders">
+   	update orders set ocost=#{ocost},endtime=#{endtime},intime=#{intime},outtime=#{outtime},oprice=#{oprice},remark=#{remark} where oid=#{oid}
+   </update>
+   <!-- 后台删除订单信息 贺欢 -->
+  <delete id="delOrders">
+      delete from `orders` where oid=#{oid}
+   </delete>
+   <!-- 查询订单总个数 贺欢 -->
+	<select id="findOrderstCount2" resultType="int">
+		select count(*) from orders where  zname like concat('%',#{zname},'%')
+	</select>
+   
+   <!-- 判断是否退订  -->
+   <select id="isunreg" resultType="int">
+   select count(*) from orders where uid=#{uid} and oid=#{oid} and endtime = ''
+   </select>
+   <!-- 退订 -->
+   <update id="unreg">
+   update orders  set  endtime=#{endtime} where uid=#{uid} and oid=#{oid}
+   </update>
+   <insert id="adduorder">
+   insert into  orders(oid,uid,zname,rprice,rimg,otime,intime,outtime) values(#{oid},#{uid},#{zname},#{rprice},#{rimg},#{otime},#{intime},#{outtime})
+   </insert>
+   
+   <select id="findRoomByRtype" resultType="Room">
+   	select * from room where rtype=#{rimg}
+   </select>
+   
+</mapper>

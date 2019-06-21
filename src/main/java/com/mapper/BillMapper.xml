@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.BillDao">
+
+
+   <resultMap type="Bill" id="BillResultMap">
+     <association property="user" column="uid" select="findUserByBill"></association>
+    </resultMap>
+    <!-- 后台查询订单信息 贺欢 -->
+    <select id="findBill"  resultMap="BillResultMap">
+     select * from bill where  oid like concat('%',#{oid},'%') limit #{pagenumber},5
+   </select>
+   <select id="findUserByBill" resultType="User">
+      select * from user where uid in (select uid from bill where bid=#{bid})
+    </select>
+    
+     <!-- 查询订单总个数 贺欢 -->
+	<select id="findBillCount2" resultType="int">
+		select count(*) from bill where  oid like concat('%',#{oid},'%')
+	</select>
+	<!-- 添加流水订单 贺欢 -->
+	<insert id="addBill">
+	    insert into bill(oid,uid, rtype, btime, zname, bprice, initime, outtime, exist) values(#{oid},#{uid} ,#{rtype},#{btime}, #{zname},#{bprice}, #{initime}, #{outtime}, #{exist})
+	</insert>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.GoodsDao">
+
+
+    <!-- 查询个数 lsr-->
+  <select id="findcount" resultType="int">
+	  select count(*) from goods
+	  <trim prefix="WHERE" prefixOverrides="and">
+			<if test="gname !=null and gname != ''">
+				and gname like concat('%',#{gname},'%')		
+			</if>
+		</trim>
+	</select>
+	<!-- 分页查询 lsr -->
+	<select id="findbypage" resultType="Goods">
+		select gid,gname,gprice,gnumber from goods 
+		<trim prefix="WHERE" prefixOverrides="and" >
+			<if test="gname !=null and gname != ''">
+				and gname like concat('%',#{gname},'%')
+			</if>
+		</trim>
+		limit #{pageNum},5
+	</select>
+   
+   <!-- 删除商品 -->
+   <delete id="delete">
+	delete from goods where gid=#{gid} 
+	</delete>
+	
+	<!-- 修改商品 lsr -->
+	<update id="update">
+	update goods set gname=#{gname},gprice=#{gprice},gnumber=#{gnumber} where gid=#{gid}
+	</update>
+	
+	<!-- 增加 lsr -->
+	<insert id="add">
+	insert into goods(gname,gprice,gnumber,remark)
+	values (#{gname},#{gprice},#{gnumber},#{remark})
+	</insert>
+
+  
+</mapper>

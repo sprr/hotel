@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ZRoomDao">
+
+   <select id="findZroomRid" resultType="Zroom">
+      select zid,rid,zname,zstatus,remark from zroom 
+   </select>
+   
+  
+   
+   <select id="findbypage" resultType="Zroomoto">
+		select z.zid,r.rtype,z.zname,z.zstatus  from zroom z , room r
+		<trim prefix="WHERE" prefixOverrides="and" >
+			z.rid= r.rid 
+			<if test="zstatus !=null and zstatus != ''">
+				and z.zstatus like concat('%',#{zstatus},'%')
+			</if>
+		</trim>
+		limit #{pageNum},5
+	</select>
+   
+   <!-- 查询个数 -->
+  <select id="findz" resultType="int">
+	  select count(*) from zroom
+	  <trim prefix="WHERE" prefixOverrides="and">
+		
+			<if test="zstatus !=null and zstatus != ''">
+				and zstatus like concat('%',#{zstatus},'%')		
+			</if>
+		</trim>
+	</select>
+	
+		<update id="update">
+	update zroom  set rid=#{rid},zname=#{zname},zstatus=#{zstatus} where zid=#{zid}
+	</update>
+</mapper>

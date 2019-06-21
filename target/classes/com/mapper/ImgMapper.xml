@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ImgDao">
+	
+	<select id="getSelectImg" resultType="Img">
+			select * from img limit #{pageNum},5
+	</select>
+	
+	<select id="getSelectImgAll" resultType="Img">
+		select * from img
+	</select>
+	
+	<!-- resultType sql语句结果类型 -->
+	<select id="getSelectImgCcount" resultType="int">
+		select count(*) from img
+	</select>
+	
+	<update id="getUpdateImgByid">
+		update img set img_info=#{img_info} where img_id=#{img_id}
+	</update>
+	
+	<insert id="insertImg">
+		insert into img(img_info) values(#{img_info});
+	</insert>
+	
+	<delete id="deleteImgByid">
+		delete from img where img_id=#{img_id}
+	</delete>
+   
+</mapper>

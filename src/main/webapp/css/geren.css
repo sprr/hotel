@@ -1,0 +1,84 @@
+.grzx{
+	margin: 20px 12% 0 12%;
+}
+.gerenxinxi{
+	/*width: 800px;*/
+	height: 500px;
+	margin: 0 auto;
+}
+.gerenxinxi-left{
+/*	background-color: sandybrown;*/
+	width: 37%;
+	height: 100%;
+	float: left;
+	padding-left: 8%;
+}
+.gerenxinxi-left .td{
+	padding-top: 50px;
+	margin-top: 10px;
+	font-size: 20px;
+}
+.gerenxinxi-left .td td {
+	padding-top: 15px;
+}
+.gerenxinxi-left .imgs{
+	padding-left: 3%;
+}
+.gerenxinxi-right{
+	width: 63%;
+	height: 100%;
+	float: right;
+}
+.gerenxinxi .button{
+	border: none;
+	margin: 10%;
+}
+.gerenxinxi .button .modal-body p{
+	text-align: center;
+	font-size: 16px;
+}
+.gerenxinxi .button .modal-body p input{
+	width: 200px;
+	height: 28px;
+	border-radius: 5px;
+	border: 1px solid #007BFF;
+}
+.l{
+	margin-left: 15px;
+}
+.sousuo input {
+	width: 220px;
+	height: 26px;
+	border-radius: 5px;
+	border: 1px solid cornflowerblue;
+}
+.sousuo{
+	margin-left: 35%;
+}
+.sousuo button {
+	width: 50px;
+	height: 30px;
+	background-color: cornflowerblue;
+	border: none;
+	color: white;
+	border-radius: 5px;
+}
+button:visited,
+button:active{
+	border: none;
+}
+.fenye{
+	float: right;
+}
+.fenye a{
+	width: 100px;
+	height: 40px;
+	border: none;
+	border-radius: 5px;
+}
+.grzx .xgmm p input{
+	width: 200px;
+	height: 28px;
+	border: 1px solid #007BFF;
+	border-radius:5px ;
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.dao.BlogDao">
+
+	<resultMap type="Comment" id="commentResultMap">
+		<id property="coid" column="coid"></id>
+		<result property="message" column="message"/>
+		<result property="cotime" column="cotime"/>
+		<result property="remark" column="remark"/>
+		<association property="uname" column="uname" select="com.dao.UserDao.findUserById"></association>
+	</resultMap>
+	
+	<!-- 查询总个数 -->
+	<select id="findCommentCount" resultType="int">
+	    select count(*) from comment
+	    <trim prefix="WHERE" prefixOverrides="and">
+			<if test="uname !=null and uname != ''">
+				and uname like concat('%',#{uname},'%')
+			</if>
+		</trim>
+	</select>
+
+    <!-- 分页 -->
+	<!--select * from comment where and limit #{pageNum},5  -->
+	<select id="findByPage" resultType="Commentoto">
+		select * from comment 
+		<trim prefix="WHERE" prefixOverrides="and">
+			<if test="uname !=null and uname != ''">
+				and uname like concat('%',#{uname},'%')
+			</if>
+		</trim>
+		limit #{pageNum},5
+	</select>
+	
+	<delete id="getDelComment">
+		delete from comment where coid=#{coid}
+	</delete>
+
+</mapper>
+

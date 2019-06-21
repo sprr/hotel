@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.IdeaDao">
+
+   
+   <insert id="add">
+      insert into idea(uname,iemail,icontent,remark) values(#{uname},#{iemail},#{icontent},#{remark})
+   </insert>
+   
+   <!-- 查询个数 lsr-->
+  <select id="findz" resultType="int">
+	  select count(*) from idea
+	  <trim prefix="WHERE" prefixOverrides="and">
+		
+			<if test="uname !=null and uname != ''">
+				and uname like concat('%',#{uname},'%')		
+			</if>
+		</trim>
+	</select>
+   
+  <!-- 分页查询 lsr -->
+	<select id="findbypage" resultType="Ideaoto">
+		select iid,uname,iemail,icontent,remark from idea 
+		<trim prefix="WHERE" prefixOverrides="and" >
+			<if test="uname !=null and uname != ''">
+				and uname like concat('%',#{uname},'%')
+			</if>
+		</trim>
+		limit #{pageNum},5
+	</select>
+   
+    <!-- 删除商品 -->
+   <delete id="delete">
+	delete from idea where iid=#{iid} 
+	</delete>
+</mapper>
